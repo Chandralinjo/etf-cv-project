@@ -20,8 +20,15 @@ imshow(frame)
 % imshow(frame)
 
 % Za detekciju koristimo detectPeopleACF funkciju
-[bboxes,scores] = detectPeopleACF(frame);
+[bboxes,scores] = detectPerson(frame);
 
 I = insertObjectAnnotation(frame,'rectangle',bboxes,scores);
 figure, imshow(I)
 title('Detektovane osobe');
+
+%% Izdvajanje osobe od pozadine
+% https://www.mathworks.com/help/vision/ref/vision.foregrounddetector-system-object.html
+
+detector = vision.ForegroundDetector('NumTrainingFrames', 25);
+
+
