@@ -31,4 +31,24 @@ title('Detektovane osobe');
 
 detector = vision.ForegroundDetector('NumTrainingFrames', 25);
 
+for i = 1:30
+    frame = readFrame(v);  % ucitavanje sledeceg frejma
+  
+% Segmentacija osobe u prednji plan (foreground)
+    foreground = step(detector, frame);
+    figure(3),
+    subplot(1,3,1), imshow(frame);
+    title('Frejm');
+    subplot(1,3,2), imshow(foreground); 
+    title('Foreground');
+
+% koristimo morfoloske operacije za uklanjanje suma i popunjavanje praznina u otkrivenim objektima.
+    se = strel('square', 1);
+    
+% filtriranje prvog plana i prikaz slike sa cistim prednjim planom (clean foreground)
+    filteredForeground = imopen(foreground, se);
+    subplot(1,3,3), imshow(filteredForeground); 
+    title('Clean Foreground');
+end
+
 
