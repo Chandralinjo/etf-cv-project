@@ -45,7 +45,7 @@ for i = 1:30
 % koristimo morfoloske operacije za uklanjanje suma i popunjavanje praznina u otkrivenim objektima.
     se = strel('square', 1);
     
-% filtriranje prvog plana i prikaz slike sa cistim prednjim planom (clean foreground)
+% filtriranje prednjeg plana i prikaz slike sa cistim prednjim planom (clean foreground)
     filteredForeground = imopen(foreground, se);
     subplot(1,3,3), imshow(filteredForeground); 
     title('Clean Foreground');
