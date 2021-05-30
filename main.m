@@ -42,10 +42,10 @@ for i = 1:30
     subplot(1,3,2), imshow(foreground); 
     title('Foreground');
 
-% koristimo morfoloske operacije za uklanjanje suma i popunjavanje praznina u otkrivenim objektima.
+% Koristimo morfoloske operacije za uklanjanje suma i popunjavanje praznina u otkrivenim objektima.
     se = strel('square', 1);
     
-% filtriranje prednjeg plana i prikaz slike sa cistim prednjim planom (clean foreground)
+% Filtriranje prednjeg plana i prikaz slike sa cistim prednjim planom (clean foreground)
     filteredForeground = imopen(foreground, se);
     subplot(1,3,3), imshow(filteredForeground); 
     title('Clean Foreground');
