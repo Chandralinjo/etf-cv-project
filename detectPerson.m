@@ -16,6 +16,7 @@ function [bboxes, scores] = detectPerson(rgbImage)
         if(bboxes_size(2) ~= 4)
             % HoG detector
             peopleDetector = vision.PeopleDetector;
+            peopleDetector.WindowStride = [4 4];
             [bboxes, scores] = step(peopleDetector, rgbImage);
         end
     end
